@@ -21,6 +21,8 @@ viewHeader currentRoute =
         ]
         [ viewLink currentRoute ( "home", routes.top )
         , viewLink currentRoute ( "nowhere", routes.notFound )
+        , viewLink currentRoute ( "Docs", routes.docs )
+        , viewLink currentRoute ( "Guide", routes.guide )
         ]
 
 

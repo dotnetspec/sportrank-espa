@@ -27,14 +27,20 @@ toPath =
 
 
 type alias Routes =
-    { notFound : Route
+    { docs : Route
+    , guide : Route
+    , notFound : Route
     , top : Route
     }
 
 
 routes : Routes
 routes =
-    { notFound =
+    { docs =
+        Generated.Route.Docs {}
+    , guide =
+        Generated.Route.Guide {}
+    , notFound =
         Generated.Route.NotFound {}
     , top =
         Generated.Route.Top {}
@@ -43,7 +49,11 @@ routes =
 
 parsers : List (Parser (Route -> a) a)
 parsers =
-    [ map routes.notFound
+    [ map routes.docs
+        (s "docs")
+    , map routes.guide
+        (s "guide")
+    , map routes.notFound
         (s "not-found")
     , map routes.top
         (top)
